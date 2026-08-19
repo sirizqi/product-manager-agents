@@ -1,12 +1,12 @@
-# Xhakala — AI Senior Product Manager Agent
+# Your Agent — AI Senior Product Manager Agent
 
-**Xhakala** is an AI agent persona acting as a Senior Product Manager with 15+ years of cross-industry experience (fintech, logistics, e-commerce, SaaS, B2B/B2C), strong on both the business and technology side. This repo contains 1 primary agent (Xhakala) plus 9 specialist subagents that together cover the full working scope of a Senior PM.
+**Your Agent Name** is an AI agent persona acting as a Senior Product Manager with 15+ years of cross-industry experience (fintech, logistics, e-commerce, SaaS, B2B/B2C), strong on both the business and technology side. This repo contains 1 primary agent (Your Agent) plus 9 specialist subagents that together cover the full working scope of a Senior PM.
 
 ## Structure
 
 ```
 agent/
-  xhakala.md                  # Primary agent — orchestrator & main persona
+  agent-name.md                  # Primary agent — orchestrator & main persona
   market-research.md          # Market research & competitive analysis
   user-research.md            # Discovery, JTBD, personas, interview synthesis
   prd-writer.md               # PRD writing & review (uses the user's `prd` skill)
@@ -17,7 +17,7 @@ agent/
   gtm-launch.md                # Go-to-market, launch plan, positioning
   tech-feasibility.md         # Technical feasibility from a PM perspective
 .claude/agents/
-  xhakala.md                  # Example adaptation to Claude Code sub-agent format
+  agent-name.md                  # Example adaptation to Claude Code sub-agent format
 opencode.json.example          # Example agent registration for OpenCode
 ```
 
@@ -72,21 +72,21 @@ git clone https://github.com/sirizqi/azure-devops-ticket-skill.git ~/.claude/ski
    - Per-project: `.opencode/agent/` (at the root of your project repo)
 2. (Optional) Copy the contents of `opencode.json.example` into your project's `opencode.json`, or let OpenCode auto-detect agents from the markdown filenames (filename = agent name).
 3. Run `opencode`, then:
-   - Switch to the `xhakala` agent as your primary agent.
+   - Switch to the `agent-name` agent as your primary agent.
    - Call a subagent directly with `@market-research`, `@prd-writer`, etc.
 4. Verify registration: `opencode agent list`.
 
 ## Install — Claude Code
 
-1. Copy `.claude/agents/xhakala.md` into the `.claude/agents/` folder of your project (or `~/.claude/agents/` for a global install).
+1. Copy `.claude/agents/agent-name.md` into the `.claude/agents/` folder of your project (or `~/.claude/agents/` for a global install).
 2. For the other subagents, create a new file per subagent using the same frontmatter pattern (`name`, `description`, `tools`, `model`) — the body/system prompt can be copied as-is from the matching file in the `agent/` folder (OpenCode format), no changes needed.
-3. Claude Code will automatically surface this agent based on its `description`, or you can call it explicitly with `@xhakala`.
+3. Claude Code will automatically surface this agent based on its `description`, or you can call it explicitly with `@agent-name`.
 
 ### Frontmatter mapping table (OpenCode → Claude Code)
 
 | OpenCode | Claude Code | Note |
 |---|---|---|
-| filename (`xhakala.md`) | `name: xhakala` | Claude Code requires an explicit `name` field |
+| filename (`agent-name.md`) | `name: agent-name` | Claude Code requires an explicit `name` field |
 | `description` | `description` | Identical, can be copied directly |
 | `mode: primary` | (no equivalent field) | Claude Code doesn't distinguish primary/subagent explicitly in frontmatter |
 | `mode: subagent` | (every file in `.claude/agents/` is automatically treated as a callable subagent) | |
@@ -101,15 +101,15 @@ Since every agent runtime has its own configuration schema, use this pattern:
 1. Take the **markdown body** (the part after the `---` frontmatter) from the desired agent file in the `agent/` folder — this is a pure system prompt, portable to any tool.
 2. Paste it as the system prompt/persona in that tool.
 3. Adjust the tool/permission control fields to match that tool's own schema (see that tool's docs) — each file's `description` field can be used as the agent's description/trigger.
-4. For multi-agent orchestration (primary calling subagents), adapt to that tool's own delegation mechanism (e.g. tool-calling, routing, or a multi-agent graph) — the "How you work with subagents" section in `xhakala.md` can serve as a reference for the routing logic.
+4. For multi-agent orchestration (primary calling subagents), adapt to that tool's own delegation mechanism (e.g. tool-calling, routing, or a multi-agent graph) — the "How you work with subagents" section in `agent-name.md` can serve as a reference for the routing logic.
 
 ## How to use (example workflow)
 
 ```
-User -> @xhakala: "I want to launch a real-time shipment tracking feature.
+User -> @agent-name: "I want to launch a real-time shipment tracking feature.
                     Help me go from research to sprint-ready."
 
-Xhakala will:
+Your Agent will:
 1. Delegate to @market-research  -> benchmark competitor tracking features
 2. Delegate to @user-research    -> synthesize customer pain points around shipment visibility
 3. Write / delegate to @prd-writer -> full PRD
@@ -123,8 +123,8 @@ Xhakala will:
 
 ## Customization
 
-- **Rename the persona**: edit the `description` field and heading in `agent/xhakala.md` — the filename determines the agent's name in OpenCode, so rename the file if you want to change the persona's name.
-- **Adjust for your industry**: add domain-specific context (e.g. logistics/fintech) to the "Operating philosophy" or "Areas of expertise" section in `xhakala.md` so recommendations are more relevant to your business.
+- **Rename the persona**: edit the `description` field and heading in `agent/agent-name.md` — the filename determines the agent's name in OpenCode, so rename the file if you want to change the persona's name.
+- **Adjust for your industry**: add domain-specific context (e.g. logistics/fintech) to the "Operating philosophy" or "Areas of expertise" section in `agent-name.md` so recommendations are more relevant to your business.
 - **Integrate with an external tracker**: the `pbi-writer.md` output is already designed to be compatible with Azure DevOps/Jira via the user's skill; adjust template fields (e.g. add `Iteration Path`, `Area Path`) as needed.
 - **Restrict tool access**: tighten the `permission` block in each `agent/*.md` file (e.g. `bash: deny`, `edit: deny`) to match the level of trust you want per subagent.
 
