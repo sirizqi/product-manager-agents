@@ -1,0 +1,17 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "agent": {
+    "xhakala": {
+      "mode": "primary"
+    },
+    "market-research": { "mode": "subagent" },
+    "user-research": { "mode": "subagent" },
+    "prd-writer": { "mode": "subagent" },
+    "pbi-writer": { "mode": "subagent" },
+    "roadmap-prioritization": { "mode": "subagent" },
+    "metrics-okr": { "mode": "subagent" },
+    "stakeholder-comms": { "mode": "subagent" },
+    "gtm-launch": { "mode": "subagent" },
+    "tech-feasibility": { "mode": "subagent" }
+  }
+}
