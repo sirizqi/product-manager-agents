@@ -1,6 +1,6 @@
 # Your Agent — AI Senior Product Manager Agent
 
-**Your Agent Name** is an AI agent persona acting as a Senior Product Manager with 15+ years of cross-industry experience (fintech, logistics, e-commerce, SaaS, B2B/B2C), strong on both the business and technology side. This repo contains 1 primary agent (Your Agent) plus 9 specialist subagents that together cover the full working scope of a Senior PM.
+**Your Agent Name** is an AI agent persona acting as a Senior Product Manager with 15+ years of cross-industry experience (fintech, logistics, e-commerce, SaaS, B2B/B2C), strong on both the business and technology side. This repo contains 1 primary agent (Your Agent) plus 10 specialist subagents that together cover the full working scope of a Senior PM.
 
 ## Structure
 
@@ -16,26 +16,30 @@ agent/
   stakeholder-comms.md        # Executive updates, decision docs, RACI
   gtm-launch.md                # Go-to-market, launch plan, positioning
   tech-feasibility.md         # Technical feasibility from a PM perspective
+  dashboard-metrics.md        # Dashboard & BI analytics (uses `metabase-analytics` skill)
 .claude/agents/
   agent-name.md                  # Example adaptation to Claude Code sub-agent format
+  dashboard-metrics.md           # Dashboard metrics subagent (Claude Code format)
 opencode.json.example          # Example agent registration for OpenCode
 ```
 
-## Skill dependencies (required for PRD & PBI)
+## Skill dependencies (required for PRD, PBI & Dashboard Metrics)
 
-`prd-writer` and `pbi-writer` **do not carry their own templates** — both are designed to always load and follow your external skills:
+`prd-writer` and `pbi-writer` **do not carry their own templates** — both are designed to always load and follow your external skills. Similarly, `dashboard-metrics` relies on the `metabase-analytics` skill for authoritative Metabase guidance:
 
 - **PRD**: [`sirizqi/product-requirement-documents`](https://github.com/sirizqi/product-requirement-documents) — skill `prd`, invoked via `/prd`
 - **PBI/Azure DevOps ticket**: [`sirizqi/azure-devops-ticket-skill`](https://github.com/sirizqi/azure-devops-ticket-skill) — skill `azure-devops-ticket-skill`, invoked via `/azure-devops-ticket-skill`
+- **Dashboard Metrics / Metabase**: [`sirizqi/metabase-skill`](https://github.com/sirizqi/metabase-skill) — skill `metabase-analytics`, invoked via `/metabase-analytics`
 
-If these skills are not installed, both subagents can still work with a generic fallback, but the output **will not follow your official standard/template** — install them first before relying on this for real work.
+If these skills are not installed, the corresponding subagents can still work with a generic fallback, but the output **will not follow your official standard/template** — install them first before relying on this for real work.
 
 ### Install on Hermes
 
 ```bash
 git clone https://github.com/sirizqi/product-requirement-documents.git ~/.hermes/skills/product-management/prd
 git clone https://github.com/sirizqi/azure-devops-ticket-skill.git ~/.hermes/skills/product-management/azure-devops-ticket-skill
-hermes skills list   # verify both appear
+git clone https://github.com/sirizqi/metabase-skill.git ~/.hermes/skills/product-management/metabase-analytics
+hermes skills list   # verify all appear
 ```
 
 ### Install on OpenCode
@@ -46,19 +50,22 @@ OpenCode has native skill discovery (same format as the Agent Skills spec) and a
 # Global — applies to all projects
 git clone https://github.com/sirizqi/product-requirement-documents.git ~/.config/opencode/skills/prd
 git clone https://github.com/sirizqi/azure-devops-ticket-skill.git ~/.config/opencode/skills/azure-devops-ticket-skill
+git clone https://github.com/sirizqi/metabase-skill.git ~/.config/opencode/skills/metabase-analytics
 
 # Or per-project
 git clone https://github.com/sirizqi/product-requirement-documents.git .opencode/skills/prd
 git clone https://github.com/sirizqi/azure-devops-ticket-skill.git .opencode/skills/azure-devops-ticket-skill
+git clone https://github.com/sirizqi/metabase-skill.git .opencode/skills/metabase-analytics
 ```
 
-After cloning, make sure `SKILL.md` sits directly inside that folder (e.g. `~/.config/opencode/skills/prd/SKILL.md`) — rename the folder if it doesn't. The `prd-writer`/`pbi-writer` agents in this repo already have `permission.skill: allow` scoped to skills named exactly `prd` and `azure-devops-ticket-skill`, so the folder name must match.
+After cloning, make sure `SKILL.md` sits directly inside that folder (e.g. `~/.config/opencode/skills/prd/SKILL.md`) — rename the folder if it doesn't. The `prd-writer`/`pbi-writer` agents in this repo already have `permission.skill: allow` scoped to skills named exactly `prd` and `azure-devops-ticket-skill`, and `dashboard-metrics` is scoped to `metabase-analytics`, so the folder name must match.
 
 ### Install on Claude Code
 
 ```bash
 git clone https://github.com/sirizqi/product-requirement-documents.git ~/.claude/skills/prd
 git clone https://github.com/sirizqi/azure-devops-ticket-skill.git ~/.claude/skills/azure-devops-ticket-skill
+git clone https://github.com/sirizqi/metabase-skill.git ~/.claude/skills/metabase-analytics
 ```
 
 (OpenCode will also automatically pick this up since it's compatible with the `.claude/skills/` layout.)
@@ -118,7 +125,8 @@ Your Agent will:
 6. Delegate to @pbi-writer        -> break the PRD into PBIs ready for Azure DevOps/Jira
 7. Delegate to @gtm-launch        -> rollout plan & positioning
 8. Delegate to @metrics-okr       -> success metrics & related OKRs
-9. Delegate to @stakeholder-comms -> executive update for leadership
+9. Delegate to @dashboard-metrics -> design Metabase dashboards for tracking KPIs
+10. Delegate to @stakeholder-comms -> executive update for leadership
 ```
 
 ## Customization

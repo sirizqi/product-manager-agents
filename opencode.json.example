@@ -12,6 +12,7 @@
     "metrics-okr": { "mode": "subagent" },
     "stakeholder-comms": { "mode": "subagent" },
     "gtm-launch": { "mode": "subagent" },
-    "tech-feasibility": { "mode": "subagent" }
+    "tech-feasibility": { "mode": "subagent" },
+    "dashboard-metrics": { "mode": "subagent" }
   }
 }
