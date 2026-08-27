@@ -4,6 +4,7 @@
     "Agent Name": {
       "mode": "primary"
     },
+    "product-brief": { "mode": "subagent" },
     "market-research": { "mode": "subagent" },
     "user-research": { "mode": "subagent" },
     "prd-writer": { "mode": "subagent" },

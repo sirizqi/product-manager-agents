@@ -1,12 +1,13 @@
 # Your Agent — AI Senior Product Manager Agent
 
-**Your Agent Name** is an AI agent persona acting as a Senior Product Manager with 15+ years of cross-industry experience (fintech, logistics, e-commerce, SaaS, B2B/B2C), strong on both the business and technology side. This repo contains 1 primary agent (Your Agent) plus 10 specialist subagents that together cover the full working scope of a Senior PM.
+**Your Agent Name** is an AI agent persona acting as a Senior Product Manager with 15+ years of cross-industry experience (fintech, logistics, e-commerce, SaaS, B2B/B2C), strong on both the business and technology side. This repo contains 1 primary agent (Your Agent) plus 11 specialist subagents that together cover the full working scope of a Senior PM.
 
 ## Structure
 
 ```
 agent/
   agent-name.md                  # Primary agent — orchestrator & main persona
+  product-brief.md               # Product brief & early-stage alignment blueprint
   market-research.md          # Market research & competitive analysis
   user-research.md            # Discovery, JTBD, personas, interview synthesis
   prd-writer.md               # PRD writing & review (uses the user's `prd` skill)
@@ -20,6 +21,7 @@ agent/
 .claude/agents/
   agent-name.md                  # Example adaptation to Claude Code sub-agent format
   dashboard-metrics.md           # Dashboard metrics subagent (Claude Code format)
+  product-brief.md               # Product brief subagent (Claude Code format)
 opencode.json.example          # Example agent registration for OpenCode
 ```
 
@@ -117,16 +119,17 @@ User -> @agent-name: "I want to launch a real-time shipment tracking feature.
                     Help me go from research to sprint-ready."
 
 Your Agent will:
-1. Delegate to @market-research  -> benchmark competitor tracking features
-2. Delegate to @user-research    -> synthesize customer pain points around shipment visibility
-3. Write / delegate to @prd-writer -> full PRD
-4. Delegate to @tech-feasibility -> flag integration risk with existing courier systems
-5. Delegate to @roadmap-prioritization -> RICE score vs. other roadmap initiatives
-6. Delegate to @pbi-writer        -> break the PRD into PBIs ready for Azure DevOps/Jira
-7. Delegate to @gtm-launch        -> rollout plan & positioning
-8. Delegate to @metrics-okr       -> success metrics & related OKRs
-9. Delegate to @dashboard-metrics -> design Metabase dashboards for tracking KPIs
-10. Delegate to @stakeholder-comms -> executive update for leadership
+1. Delegate to @product-brief     -> draft initial product brief as the alignment blueprint
+2. Delegate to @market-research  -> benchmark competitor tracking features
+3. Delegate to @user-research    -> synthesize customer pain points around shipment visibility
+4. Write / delegate to @prd-writer -> full PRD
+5. Delegate to @tech-feasibility -> flag integration risk with existing courier systems
+6. Delegate to @roadmap-prioritization -> RICE score vs. other roadmap initiatives
+7. Delegate to @pbi-writer        -> break the PRD into PBIs ready for Azure DevOps/Jira
+8. Delegate to @gtm-launch        -> rollout plan & positioning
+9. Delegate to @metrics-okr       -> success metrics & related OKRs
+10. Delegate to @dashboard-metrics -> design Metabase dashboards for tracking KPIs
+11. Delegate to @stakeholder-comms -> executive update for leadership
 ```
 
 ## Customization

@@ -23,7 +23,7 @@ Strategy & Vision, Discovery/User Research, PRD & Requirement Writing, Prioritiz
 
 ## Delegating to subagents
 
-For sufficiently deep tasks, delegate to the matching Claude Code subagent (see other files in this folder once created): market-research, user-research, prd-writer, pbi-writer, roadmap-prioritization, metrics-okr, stakeholder-comms, gtm-launch, tech-feasibility, dashboard-metrics. Answer directly for quick questions or cross-domain strategic discussion.
+For sufficiently deep tasks, delegate to the matching Claude Code subagent (see other files in this folder once created): product-brief, market-research, user-research, prd-writer, pbi-writer, roadmap-prioritization, metrics-okr, stakeholder-comms, gtm-launch, tech-feasibility, dashboard-metrics. Answer directly for quick questions or cross-domain strategic discussion.
 
 ## Communication style
 

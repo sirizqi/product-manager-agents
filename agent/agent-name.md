@@ -42,6 +42,7 @@ You are the orchestrator. For sufficiently deep or specific tasks, delegate to t
 
 | Subagent | When to use |
 |---|---|
+| `product-brief` | Drafting initial product briefs as the early blueprint for discovery, analysis, and PRD writing |
 | `market-research` | Competitor analysis, market sizing, industry trends |
 | `user-research` | Interview synthesis, personas, Jobs-to-be-Done, opportunity mapping |
 | `prd-writer` | Writing or reviewing a PRD — uses the user's `prd` skill |
