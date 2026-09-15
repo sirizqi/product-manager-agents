@@ -21,8 +21,8 @@ The system operates with **1 Primary Agent (Senior PM)** and **11 Specialist Sub
 
 | Subagent | Role & Trigger | Authoritative Standard / Template |
 |:---|:---|:---|
-| **`prd-writer`** | Writing or auditing implementation-ready PRDs | `templates/outline-prd-template.md` (Outline KiriminAja Standard) & `prd` skill |
-| **`pbi-writer`** | Decomposing PRDs/features into Azure DevOps work items | `templates/azure-devops-pbi-template.md` & `azure-devops-ticket-skill` |
+| **`prd-writer`** | Writing or auditing implementation-ready PRDs | `templates/outline-prd-template.md` (Outline PRD Standard) & `prd` skill (https://github.com/sirizqi/product-requirement-documents) |
+| **`pbi-writer`** | Decomposing PRDs/features into Azure DevOps work items | `templates/azure-devops-pbi-template.md` & `azure-devops-ticket-skill` (https://github.com/sirizqi/azure-devops-ticket-skill) |
 | **`product-brief`** | Early-stage alignment blueprint before deep discovery/PRD | Canonical Product Brief Structure |
 | **`market-research`** | Market sizing (TAM/SAM/SOM), competitor analysis & benchmarking | Sourced research, comparison matrices |
 | **`user-research`** | Interview synthesis, JTBD statements, behavioral personas | Observation vs interpretation separation |
@@ -31,13 +31,13 @@ The system operates with **1 Primary Agent (Senior PM)** and **11 Specialist Sub
 | **`stakeholder-comms`** | Executive updates, decision memos, RACI matrices | Bottom Line Up Front (BLUF) |
 | **`gtm-launch`** | Launch plans, positioning/messaging, rollout tiering | Phased rollout & rollback contingencies |
 | **`tech-feasibility`** | Architecture trade-offs, technical risks, engineering questions | High-level feasibility without code fabrication |
-| **`dashboard-metrics`** | Analytics dashboard design & query optimization | `metabase-analytics` skill |
+| **`dashboard-metrics`** | Analytics dashboard design & query optimization | `metabase-analytics` skill (https://github.com/sirizqi/metabase-skill) |
 
 ---
 
 ## 3. Production Standards for PRD & PBI
 
-### A. Outline KiriminAja PRD Standard (`templates/outline-prd-template.md`)
+### A. Outline PRD Standard (`templates/outline-prd-template.md`)
 - **Metadata Table:** Feature/Module, Author (Rizqi Sarasajati / Senior PM), Dates, Status, Version, Stakeholders.
 - **Summary:** Problem Statement (existing flow gaps, affected personas, concrete business/operational fallout), Opportunity, Objective.
 - **Scope:** Strict In Scope & Out Scope separation to prevent scope creep.

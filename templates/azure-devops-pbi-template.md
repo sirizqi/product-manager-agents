@@ -15,9 +15,9 @@
 ## Title
 
 Gunakan salah satu format berikut:
-- **Format Operasional / Technical (KiriminAja standard):**
+- **Format Operasional / Technical:**
   `[Tag/Domain] Subsystem/Service - Specific Capability`
-  *Contoh:* `[Enhance] LionParcel - Status Return` atau `[Enhance] Cache - SPX - Mechanism`
+  *Contoh:* `[Enhance] Courier - Status Return` atau `[Enhance] Cache - Rate - Mechanism`
 - **Format User Story:**
   `[Module]: As a [Persona], I need [capability] so that [business value]`
   *Contoh:* `[Order Management]: As a Seller, I need to filter instant orders separately so that I can dispatch drivers before cut-off time`

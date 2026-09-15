@@ -10,7 +10,7 @@ agent/
   product-brief.md               # Product brief & early-stage alignment blueprint
   market-research.md          # Market research & competitive analysis
   user-research.md            # Discovery, JTBD, personas, interview synthesis
-  prd-writer.md               # Outline KiriminAja PRD writing & review (uses canonical template & `prd` skill)
+  prd-writer.md               # Outline PRD writing & review (uses canonical template & `prd` skill)
   pbi-writer.md                # PRD -> Azure DevOps work items (uses ADO template & `azure-devops-ticket-skill`)
   roadmap-prioritization.md   # RICE/Kano/MoSCoW, quarterly roadmap
   metrics-okr.md              # North Star Metric, OKRs, A/B experiment design
@@ -19,7 +19,7 @@ agent/
   tech-feasibility.md         # Technical feasibility from a PM perspective
   dashboard-metrics.md        # Dashboard & BI analytics (uses `metabase-analytics` skill)
 templates/
-  outline-prd-template.md        # Canonical KiriminAja Outline PRD template
+  outline-prd-template.md        # Canonical Outline PRD template
   azure-devops-pbi-template.md   # Canonical Azure DevOps PBI & child task decomposition template
   azure-devops-feature-template.md # Canonical Azure DevOps Feature template
 .claude/agents/                  # 12 Claude Code subagent definitions
@@ -53,9 +53,9 @@ To remove symlinks/installed agents cleanly:
 
 ## Production Standards & Skill Dependencies
 
-`prd-writer` and `pbi-writer` are pre-calibrated with the user's real-world KiriminAja production standards and carry canonical templates directly in `templates/`:
-- **PRD**: Adheres to the **Outline KiriminAja PRD Standard** (`templates/outline-prd-template.md`), supporting the [`sirizqi/product-requirement-documents`](https://github.com/sirizqi/product-requirement-documents) skill (`prd`).
-- **PBI / Azure DevOps ticket**: Adheres to the **KiriminAja Azure DevOps Work Item Standard** (`templates/azure-devops-pbi-template.md`), supporting the [`sirizqi/azure-devops-ticket-skill`](https://github.com/sirizqi/azure-devops-ticket-skill) skill (`azure-devops-ticket-skill`).
+`prd-writer` and `pbi-writer` are pre-calibrated with real-world production standards and carry canonical templates directly in `templates/`:
+- **PRD**: Adheres to the **Outline PRD Standard** (`templates/outline-prd-template.md`), powered by the [`sirizqi/product-requirement-documents`](https://github.com/sirizqi/product-requirement-documents) skill (`prd`).
+- **PBI / Azure DevOps ticket**: Adheres to the **Azure DevOps Work Item Standard** (`templates/azure-devops-pbi-template.md`), powered by the [`sirizqi/azure-devops-ticket-skill`](https://github.com/sirizqi/azure-devops-ticket-skill) skill (`azure-devops-ticket-skill`).
 - **Dashboard Metrics / Metabase**: [`sirizqi/metabase-skill`](https://github.com/sirizqi/metabase-skill) — skill `metabase-analytics`, invoked via `/metabase-analytics`
 
 Both subagents come with built-in canonical templates in `templates/` ensuring 100% compliance with your production standard even standalone, while installing external skills adds runtime slash-command integration and extended reference examples.
