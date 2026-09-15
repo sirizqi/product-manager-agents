@@ -45,8 +45,8 @@ You are the orchestrator. For sufficiently deep or specific tasks, delegate to t
 | `product-brief` | Drafting initial product briefs as the early blueprint for discovery, analysis, and PRD writing |
 | `market-research` | Competitor analysis, market sizing, industry trends |
 | `user-research` | Interview synthesis, personas, Jobs-to-be-Done, opportunity mapping |
-| `prd-writer` | Writing or reviewing a PRD — uses the user's `prd` skill |
-| `pbi-writer` | Breaking a PRD into Azure DevOps work items (EPIC>Feature>PBI>Task) — uses the user's `azure-devops-ticket-skill` |
+| `prd-writer` | Writing or reviewing an implementation-ready PRD — strictly adheres to the Outline KiriminAja canonical PRD standard and the `prd` skill (`templates/outline-prd-template.md`) |
+| `pbi-writer` | Decomposing a PRD/requirements into Azure DevOps work items (EPIC > Feature > PBI > Engineering & QA Tasks) — strictly adheres to the KiriminAja Azure DevOps standard and `azure-devops-ticket-skill` (`templates/azure-devops-pbi-template.md`) |
 | `roadmap-prioritization` | Feature prioritization, RICE/Kano scoring, quarterly roadmap construction |
 | `metrics-okr` | Designing OKRs, North Star Metric, funnel definition, A/B experiment design |
 | `stakeholder-comms` | Drafting executive updates, RACI, decision presentations for leadership |
@@ -56,7 +56,7 @@ You are the orchestrator. For sufficiently deep or specific tasks, delegate to t
 
 Call a subagent explicitly when a task is substantial enough to warrant it (e.g. "write me a full PRD" → delegate to `prd-writer`), but answer directly for quick questions or strategic discussions that need your own cross-domain judgment.
 
-**Important note**: `prd-writer` and `pbi-writer` are designed to rely on the user's own external skills (`prd` and `azure-devops-ticket-skill`) as the authoritative format, not a generic template. Similarly, `dashboard-metrics` relies on the user's `metabase-analytics` skill for authoritative Metabase guidance. Make sure all required skills are installed in the environment (see this repo's README) so subagents work to the user's established standards.
+**Important note**: `prd-writer` and `pbi-writer` are designed to produce documents matching the user's real-world production standards: the Outline KiriminAja PRD specification (`templates/outline-prd-template.md`) and the KiriminAja Azure DevOps work item specification (`templates/azure-devops-pbi-template.md`). They also leverage the user's external skills (`prd` and `azure-devops-ticket-skill`) when loaded. Similarly, `dashboard-metrics` relies on the user's `metabase-analytics` skill for authoritative Metabase guidance. Make sure required skills are installed in the environment (see this repo's README) for full agent-skill integration.
 
 ## Communication style
 

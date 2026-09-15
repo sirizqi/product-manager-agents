@@ -10,30 +10,55 @@ agent/
   product-brief.md               # Product brief & early-stage alignment blueprint
   market-research.md          # Market research & competitive analysis
   user-research.md            # Discovery, JTBD, personas, interview synthesis
-  prd-writer.md               # PRD writing & review (uses the user's `prd` skill)
-  pbi-writer.md                # PRD -> Azure DevOps work items (uses `azure-devops-ticket-skill`)
+  prd-writer.md               # Outline KiriminAja PRD writing & review (uses canonical template & `prd` skill)
+  pbi-writer.md                # PRD -> Azure DevOps work items (uses ADO template & `azure-devops-ticket-skill`)
   roadmap-prioritization.md   # RICE/Kano/MoSCoW, quarterly roadmap
   metrics-okr.md              # North Star Metric, OKRs, A/B experiment design
   stakeholder-comms.md        # Executive updates, decision docs, RACI
   gtm-launch.md                # Go-to-market, launch plan, positioning
   tech-feasibility.md         # Technical feasibility from a PM perspective
   dashboard-metrics.md        # Dashboard & BI analytics (uses `metabase-analytics` skill)
-.claude/agents/
-  agent-name.md                  # Example adaptation to Claude Code sub-agent format
-  dashboard-metrics.md           # Dashboard metrics subagent (Claude Code format)
-  product-brief.md               # Product brief subagent (Claude Code format)
+templates/
+  outline-prd-template.md        # Canonical KiriminAja Outline PRD template
+  azure-devops-pbi-template.md   # Canonical Azure DevOps PBI & child task decomposition template
+  azure-devops-feature-template.md # Canonical Azure DevOps Feature template
+.claude/agents/                  # 12 Claude Code subagent definitions
+AGENTS.md                        # Universal agent architecture & standard rules
+install.sh                       # Universal one-click installer for all runtimes
+uninstall.sh                     # Clean uninstaller script
 opencode.json.example          # Example agent registration for OpenCode
 ```
 
-## Skill dependencies (required for PRD, PBI & Dashboard Metrics)
+## Quick Start — One-Click Multi-Runtime Installation
 
-`prd-writer` and `pbi-writer` **do not carry their own templates** — both are designed to always load and follow your external skills. Similarly, `dashboard-metrics` relies on the `metabase-analytics` skill for authoritative Metabase guidance:
+Run the universal installer to automatically configure the agents across your installed AI tools (**OpenCode**, **Claude Code**, **OpenAI Codex**, **Hermes**, or a specific project):
 
-- **PRD**: [`sirizqi/product-requirement-documents`](https://github.com/sirizqi/product-requirement-documents) — skill `prd`, invoked via `/prd`
-- **PBI/Azure DevOps ticket**: [`sirizqi/azure-devops-ticket-skill`](https://github.com/sirizqi/azure-devops-ticket-skill) — skill `azure-devops-ticket-skill`, invoked via `/azure-devops-ticket-skill`
+```bash
+# Auto-detect installed environments and install automatically:
+./install.sh
+
+# Or target specific runtimes:
+./install.sh --all                 # Install globally to all supported tools
+./install.sh --opencode            # Install to ~/.config/opencode/agents/
+./install.sh --claudecode          # Install to ~/.claude/agents/
+./install.sh --codex               # Install to ~/.codex/skills/ & ~/.codex/AGENTS.md
+./install.sh --hermes              # Install to ~/.hermes/agents/product-manager/
+./install.sh --project /path/repo  # Install locally into another repository
+```
+
+To remove symlinks/installed agents cleanly:
+```bash
+./uninstall.sh
+```
+
+## Production Standards & Skill Dependencies
+
+`prd-writer` and `pbi-writer` are pre-calibrated with the user's real-world KiriminAja production standards and carry canonical templates directly in `templates/`:
+- **PRD**: Adheres to the **Outline KiriminAja PRD Standard** (`templates/outline-prd-template.md`), supporting the [`sirizqi/product-requirement-documents`](https://github.com/sirizqi/product-requirement-documents) skill (`prd`).
+- **PBI / Azure DevOps ticket**: Adheres to the **KiriminAja Azure DevOps Work Item Standard** (`templates/azure-devops-pbi-template.md`), supporting the [`sirizqi/azure-devops-ticket-skill`](https://github.com/sirizqi/azure-devops-ticket-skill) skill (`azure-devops-ticket-skill`).
 - **Dashboard Metrics / Metabase**: [`sirizqi/metabase-skill`](https://github.com/sirizqi/metabase-skill) — skill `metabase-analytics`, invoked via `/metabase-analytics`
 
-If these skills are not installed, the corresponding subagents can still work with a generic fallback, but the output **will not follow your official standard/template** — install them first before relying on this for real work.
+Both subagents come with built-in canonical templates in `templates/` ensuring 100% compliance with your production standard even standalone, while installing external skills adds runtime slash-command integration and extended reference examples.
 
 ### Install on Hermes
 
